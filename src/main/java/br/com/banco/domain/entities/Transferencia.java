@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -15,15 +16,17 @@ public class Transferencia {
     @Id
     private long id;
     //NOT NULL
-    private LocalDateTime data_tranferencia;
+    @Column(name = "data_transferencia")
+    private LocalDate dataTransferencia;
     //NOT NULL
     private float valor;
    //NOT NULL
     private String tipo;
-
-    private String nome_operador_transacao;
+    @Column(name = "nome_operador_transacao")
+    private String operador;
 
     @ManyToOne
+    @JoinColumn(name = "conta_id")
     private Conta conta;
 
     public long getId() {
@@ -34,13 +37,7 @@ public class Transferencia {
         this.id = id;
     }
 
-    public LocalDateTime getData_tranferencia() {
-        return data_tranferencia;
-    }
 
-    public void setData_tranferencia(LocalDateTime data_tranferencia) {
-        this.data_tranferencia = data_tranferencia;
-    }
 
     public float getValor() {
         return valor;
@@ -58,12 +55,20 @@ public class Transferencia {
         this.tipo = tipo;
     }
 
-    public String getNome_operador_transacao() {
-        return nome_operador_transacao;
+    public LocalDate getDataTransferencia() {
+        return dataTransferencia;
     }
 
-    public void setNome_operador_transacao(String nome_operador_transacao) {
-        this.nome_operador_transacao = nome_operador_transacao;
+    public void setDataTransferencia(LocalDate dataTransferencia) {
+        this.dataTransferencia = dataTransferencia;
+    }
+
+    public String getOperador() {
+        return operador;
+    }
+
+    public void setOperador(String operador) {
+        this.operador = operador;
     }
 
     public Conta getConta() {

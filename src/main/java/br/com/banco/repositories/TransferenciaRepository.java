@@ -16,8 +16,4 @@ public interface TransferenciaRepository extends JpaRepository<Transferencia, Lo
 
     List<Transferencia> findByContaAndOperadorAndDataTransferenciaBetween(Conta conta,String nome ,LocalDate start, LocalDate end);
 
-
-
-
-
 }
